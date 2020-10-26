@@ -11,7 +11,7 @@ var app = new Vue({
               title: 'АО Еврохим',
               city: 'г. Кингисепп',
               projectType: 'Бытовка',
-              image: '/img/project__item-bg.png',
+              image: 'img/project__item-bg.png',
               duration: 1,
               metters: 115,
               images: [
@@ -25,7 +25,7 @@ var app = new Vue({
               title: 'АО Еврохим',
               city: 'г. Усть - Луга',
               projectType: 'Модульное здание',
-              image: '/img/luga__1.jpg',
+              image: 'img/luga__1.jpg',
               duration: 3,
               metters: 180,
               images: [
