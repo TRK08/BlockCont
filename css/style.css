@@ -840,6 +840,10 @@ svg path {
   margin-bottom: 16px;
 }
 
+.footer__requisites-header p {
+  color: #000;
+}
+
 .footer__contacts {
   text-align: right;
   display: flex;
