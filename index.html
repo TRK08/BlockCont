@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Block Cont</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+	<!-- тут мы подключаем наш любимый vue.js -->
+	<script src="https://unpkg.com/vue"></script>
+	<!-- тут мы подключаем наш любимый vue.js -->
+
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body >
+
+<div id="app">
+	
+
+	
+<header class="header" id="header">
+	<div class="container">
+		<div class="header__bar">
+			<a href="#" class="col-md-2 header__logo logo">BLOCK_CONT</a>
+			<ul class="col-md-10 header__menu hidden-xs hidden-sm">
+				<li class="header__menu-item">
+					<a class="smoothScrollTo" href="#projects">О Компании</a>
+				</li>
+				<li class="header__menu-item">
+					<a class="smoothScrollTo" href="#advantage">География проектов</a>
+				</li>
+				<li class="header__menu-item">
+					<a class="smoothScrollTo" href="#contact">Цены на решения</a>
+				</li>
+				<li class="header__menu-item">
+					<a class="smoothScrollTo" href="#footer">Контакты</a>
+				</li>
+				<li class="header__menu-item">
+					<a href="tel:+79212121212">+7 (921) 212-12-12</a>
+				</li>
+				<li class="header__menu-item">
+					<a href="#">
+						<img src="./img/inst.svg" alt="">
+					</a>
+				</li>
+			</ul>
+			<div class="header__bar-burger hidden-xl hidden-lg hidden-md">
+				<span class="line"></span>
+				<span class="line"></span>
+				<span class="line"></span>
+			</div>
+		</div>
+		<div class="header__text">
+			<h1 class="header__text-title">Строительство блок контейнеров <br> в Санкт-Петербурге</h1>
+			<span class="blue__line"></span>
+			<h3 class="header__text-subtitle">Презентабельное рабочее пространство для любого бюджета.</h3>
+		</div>
+		<div class="header__products-wrap">
+			<div class="header__products">
+				<div class="header__products-item">Модульные здания</div>
+				<span class="header__products-verticalLine"></span>
+				<div class="header__products-item">Бытовки</div>
+				<span class="header__products-verticalLine"></span>
+				<div class="header__products-item">Посты охраны</div>
+				<span class="header__products-verticalLine"></span>
+				<div class="header__products-item">Диспетчерские будки</div>
+			</div>
+		</div>
+		
+		<div class="header__btn">
+			<a class="btnOpenModal">Получить бесплатную консультацию</a>
+		</div>
+		<div class="header__scroll">
+			<p class="header__scroll-title">Листайте вниз</p>
+			<img src="./img/header__scroll.svg" alt="" class="header__scroll-img wow animate__animated animate__fadeInDown animate__slower animate__infinite">
+		</div>
+
+
+		
+
+	</div>
+
+
+	<div class="header__mobileMenu">
+		<ul class="header__mobileNav">
+			<li class="header__mobileMenu-item">
+				<a class="smoothScrollTo" href="#projects">О Компании</a>
+			</li>
+			<li class="header__mobileMenu-item">
+				<a class="smoothScrollTo" href="#advantage">География проектов</a>
+			</li>
+			<li class="header__mobileMenu-item">
+				<a class="smoothScrollTo" href="#contact">Цены на решения</a>
+			</li>
+			<li class="header__mobileMenu-item">
+				<a class="smoothScrollTo" href="#footer">Контакты</a>
+			</li>
+			<li class="header__mobileMenu-item">
+				<a href="#">
+					<img src="./img/inst.svg" alt="">
+				</a>
+			</li>
+			<li class="header__mobileMenu-item">
+				<a href="tel:+79212121212">+7 (921) 212-12-12</a>
+			</li>
+			
+		</ul>
+	</div>
+</header>
+
+<!--  -->
+
+
+
+<div class="projects" id="projects">
+	<div class="container">
+		<span class="blue__line"></span>
+		<h2 class="projects__title">География завершенных <br> проектов</h2>
+
+		<div class="col-md-6 projects__item" v-for="(item, index) in projects" :key="index">
+			<div class="projects__item-header">
+				<div class="projects__item-title"> {{ item.title }}</div>
+				<div class="projects__item-subtitle"> {{item.city}}</div>
+			</div>
+			<div class="projects__item-body">
+				<div class="projects__item-type">{{item.projectType}}</div>
+				<img 
+				:src="item.image" 
+				class="projects__item-img"></img>
+				<div class="item-body__blocks">
+					<div class="item-body__block-time">
+						<img src="./img/projects__item-time.svg" alt="">
+						<div class="item-body__block-descr">
+							<p>{{item.duration}} мес.</p>
+							<span>возведение</span>
+						</div>
+					</div>
+					<div class="item-body__block-area">
+						<img src="./img/project__item-area.svg" alt="">
+						<div class="item-body__block-descr">
+							<p>{{item.metters}} м²</p>
+							<span>метраж</span>
+						</div>
+					</div>
+					<button @click="toggleModal(index, item.title)"  class="item-body__block-btn">Смотреть фото</button>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<transition name="modal">
+			<div v-if="modalIsOpen" class="projects__modal">
+				<div class="project__modal-wrap">
+					<div class="col-10 projects__modal-content" @click="closeModal">
+						<div class="content__wrap" @click.stop="">
+							<h3 class="projects__modal-title">{{ modalTitle }}</h3>
+							<img :src="getActiveImg.img" >
+						</div>
+					</div>
+					<div @click="closeModal" class="closeModal">
+						<span>Скрыть</span>
+						<svg class="closeXProjects" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path  d="M0.323947 1.90899C-0.105053 1.47999 -0.105053 0.765994 0.323947 0.321994C0.767947 -0.107006 1.46695 -0.107006 1.91095 0.321994L11.4339 9.86099L20.9729 0.321994C21.4019 -0.107006 22.1159 -0.107006 22.5439 0.321994C22.9879 0.765994 22.9879 1.48099 22.5439 1.90899L13.0209 11.433L22.5439 20.972C22.9879 21.401 22.9879 22.115 22.5439 22.559C22.1149 22.988 21.4009 22.988 20.9729 22.559L11.4339 13.02L1.91095 22.559C1.46695 22.988 0.767947 22.988 0.323947 22.559C-0.105053 22.115 -0.105053 21.4 0.323947 20.972L9.84695 11.433L0.323947 1.90899Z" fill="black"/>
+						</svg>
+					</div>
+					<div class="col-2 projects__modal-whiteSpace" @click.stop="">
+							
+							<img 
+								v-for="(item, index) in modalProject" 
+								:key="index" 
+								:src="item.img" 
+								:class="{active: item.active}"
+								class="modal-whiteSpace__img " 
+								@click="activateMainImg(index)"
+							>
+					
+						
+						
+					</div>
+				</div>
+			</div>
+		</transition>	
+
+
+
+
+
+
+	</div>
+
+</div>
+
+
+
+<!--  -->
+
+
+<section class="scheme" id="scheme">
+	<div class="container">
+		<span class="blue__line"></span>
+		<h2 class="scheme__header">Схема сотрудничества</h2>
+		<div class="scheme__step">
+			<div class="scheme__step-item">
+				<div class="step-item__number">01</div>
+				<div class="dotted-line"></div>
+				<div class="step-item__title">Оставьте заявку</div>
+				<div class="step-item__descr">Вы можете оставить заявку на сайте, позвонить или написать нам на email.</div>
+				
+			</div>
+			<div class="scheme__step-item">
+				<div class="step-item__number">02</div>
+				<div class="dotted-line__circle"></div>
+				<div class="step-item__title">Оставьте заявку</div>
+				<div class="step-item__descr">Вы можете оставить заявку на сайте, позвонить или написать нам на email.</div>
+				
+			</div>
+			<div class="scheme__step-item">
+				<div class="step-item__number">03</div>
+				<div class="dotted-line"></div>
+				<div class="step-item__title">Оставьте заявку</div>
+				<div class="step-item__descr">Вы можете оставить заявку на сайте, позвонить или написать нам на email.</div>
+				
+			</div>
+			<div class="scheme__step-item">
+				<div class="step-item__number">04</div>
+				<div class="step-item__title">Оставьте заявку</div>
+				<div class="step-item__descr">Вы можете оставить заявку на сайте, позвонить или написать нам на email.</div>
+				
+			</div>
+		</div>
+		
+		<div class="scheme__img">
+			<img src="./img/scheme__img.png" alt="">
+		</div>
+	</div>
+</section>
+
+<section class="advantage" id="advantage">
+	<div class="container">
+		<span class="blue__line"></span>
+		<h2>Доверьтесь нам <br> и получите офис, который Вам нужен</h2>
+		<div class="advantage__block">
+			<div class="advantage__block-item col-md-4 col-sm-6 col-xs-12">
+				<div class="block-item__img">
+					<img src="./img/advantage-block__img.svg" alt="">
+				</div>
+				<div class="block-item__title">Возведение <br> от 1 месяца</div>
+				<div class="advantage__block-item--hover hover__item">
+					<div class="hover__item-title">Возведение от 1 месяца</div>
+					<div class="hover__item-descr">Строительство модульного здания займет от 1 месяца и сэкономит время на сборе документов и создании фундамента. Это на 40% быстрее капитального строительства.</div>
+				</div>
+			</div>
+			<div class="advantage__block-item col-md-4 col-sm-6 col-xs-12">
+				<div class="block-item__img">
+					<img src="./img/advantage-block__img.svg" alt="">
+				</div>
+				<div class="block-item__title">Возведение <br> от 1 месяца</div>
+				<div class="advantage__block-item--hover hover__item">
+					<div class="hover__item-title">Возведение от 1 месяца</div>
+					<div class="hover__item-descr">Строительство модульного здания займет от 1 месяца и сэкономит время на сборе документов и создании фундамента. Это на 40% быстрее капитального строительства.</div>
+				</div>
+			</div>
+			<div class="advantage__block-item col-md-4 col-sm-6 col-xs-12">
+				<div class="block-item__img">
+					<img src="./img/advantage-block__img.svg" alt="">
+				</div>
+				<div class="block-item__title">Возведение <br> от 1 месяца</div>
+				<div class="advantage__block-item--hover hover__item">
+					<div class="hover__item-title">Возведение от 1 месяца</div>
+					<div class="hover__item-descr">Строительство модульного здания займет от 1 месяца и сэкономит время на сборе документов и создании фундамента. Это на 40% быстрее капитального строительства.</div>
+				</div>
+			</div>
+			<div class="advantage__block-item col-md-4 col-sm-6 col-xs-12">
+				<div class="block-item__img">
+					<img src="./img/advantage-block__img.svg" alt="">
+				</div>
+				<div class="block-item__title">Возведение <br> от 1 месяца</div>
+				<div class="advantage__block-item--hover hover__item">
+					<div class="hover__item-title">Возведение от 1 месяца</div>
+					<div class="hover__item-descr">Строительство модульного здания займет от 1 месяца и сэкономит время на сборе документов и создании фундамента. Это на 40% быстрее капитального строительства.</div>
+				</div>
+			</div>
+			<div class="advantage__block-item col-md-4 col-sm-6 col-xs-12">
+				<div class="block-item__img">
+					<img src="./img/advantage-block__img.svg" alt="">
+				</div>
+				<div class="block-item__title">Возведение <br> от 1 месяца</div>
+				<div class="advantage__block-item--hover hover__item">
+					<div class="hover__item-title">Возведение от 1 месяца</div>
+					<div class="hover__item-descr">Строительство модульного здания займет от 1 месяца и сэкономит время на сборе документов и создании фундамента. Это на 40% быстрее капитального строительства.</div>
+				</div>
+			</div>
+			<div class="advantage__block-item col-md-4 col-sm-6 col-xs-12">
+				<div class="block-item__img">
+					<img src="./img/advantage-block__img.svg" alt="">
+				</div>
+				<div class="block-item__title">Возведение <br> от 1 месяца</div>
+				<div class="advantage__block-item--hover hover__item">
+					<div class="hover__item-title">Возведение от 1 месяца</div>
+					<div class="hover__item-descr">Строительство модульного здания займет от 1 месяца и сэкономит время на сборе документов и создании фундамента. Это на 40% быстрее капитального строительства.</div>
+				</div>
+			</div>
+			
+			
+			
+		</div>
+	</div>
+</section>
+
+
+<section class="contact" id="contact">
+	<div class="container">
+		<div class="contact__form col-sm-6">
+			<span class="blue__line"></span>
+			<h2 class="contact__form-title">Свяжитесь с нами и получите бесплатную консультацию</h2>
+			<form action="" class="contact__form-form">
+				<span>ВАШЕ ИМЯ</span>
+				<input name="name" type="text" class="contact__form-name" placeholder="Введите имя">
+				<span>ВАШ ТЕЛЕФОН</span>
+				<input name="tel" type="tel" class="contact__form-phone" placeholder="Введитe телефон">
+				<span>ВАШ E-MAIL</span>
+				<input name="email" type="email" class="contact__form-email" placeholder="Введите email">
+				<a href="#" class="contact__form-btn">Свяжитесть с нами</a>
+			</form>
+		</div>
+		<div class="contact__check col-sm-6">
+			<div class="contact__check-title">А так же:</div>
+			<div class="contact__check-item">Предварительную смету</div>
+			<div class="contact__check-item">Предварительную смету</div>
+			<div class="contact__check-item">Предварительную смету</div>
+		</div>
+	</div>
+
+	<div class="modal__form">
+		<div class="modal__form-wrap">
+			<form action="" class="contact__form-form">
+				<span class="blue__line"></span>
+				<h3 class="contact__form-title">Свяжитесь с нами</h3>
+				<span>ВАШЕ ИМЯ</span>
+				<input name="name" type="text" class="contact__form-name" placeholder="Введите имя">
+				<span>ВАШ ТЕЛЕФОН</span>
+				<input name="tel" type="tel" class="contact__form-phone" placeholder="Введитe телефон">
+				<span>ВАШ E-MAIL</span>
+				<input name="email" type="email" class="contact__form-email" placeholder="Введите email">
+				<a href="#" class="contact__form-btn">Свяжитесть с нами</a>
+			</form>
+			
+		</div>
+		<div class="modal__form-close">
+			<svg class="closeXModalForm" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path  d="M0.323947 1.90899C-0.105053 1.47999 -0.105053 0.765994 0.323947 0.321994C0.767947 -0.107006 1.46695 -0.107006 1.91095 0.321994L11.4339 9.86099L20.9729 0.321994C21.4019 -0.107006 22.1159 -0.107006 22.5439 0.321994C22.9879 0.765994 22.9879 1.48099 22.5439 1.90899L13.0209 11.433L22.5439 20.972C22.9879 21.401 22.9879 22.115 22.5439 22.559C22.1149 22.988 21.4009 22.988 20.9729 22.559L11.4339 13.02L1.91095 22.559C1.46695 22.988 0.767947 22.988 0.323947 22.559C-0.105053 22.115 -0.105053 21.4 0.323947 20.972L9.84695 11.433L0.323947 1.90899Z" fill="white"/>
+			</svg>
+		</div>
+	</div>
+</section>
+
+
+<section class="question" id="question">
+	<div class="container">
+		<span class="blue__line"></span>
+		<div class="question__title">Часто задаваемые вопросы</div>
+		<div class="question__accordion">
+			<div class="accordion__item active">
+				<div class="accordion__header">
+					<h3 class="accordion__header-title">Где посмотреть Ваши готовые проекты в живую?</h3>
+					<div class="accordion__header-icon">
+						<img src="./img/question__arrow.svg" alt="">
+					</div>
+				</div>
+				<div class="accordion__body">
+					<p class="accordion__body-text">
+						Строительство модульного здания займет от 1 месяца и сэкономит время на сборе документов и создании фундамента. Это на 40% быстрее капитального строительства.
+					</p>
+				</div>
+			</div>
+			<div class="accordion__item">
+				<div class="accordion__header">
+					<h3 class="accordion__header-title">Где посмотреть Ваши готовые проекты в живую?</h3>
+					<div class="accordion__header-icon">
+						<img src="./img/question__arrow.svg" alt="">
+					</div>
+				</div>
+				<div class="accordion__body">
+					<p class="accordion__body-text">
+						Строительство модульного здания займет от 1 месяца и сэкономит время на сборе документов и создании фундамента. Это на 40% быстрее капитального строительства.
+					</p>
+				</div>
+			</div>
+			<div class="accordion__item">
+				<div class="accordion__header">
+					<h3 class="accordion__header-title">Где посмотреть Ваши готовые проекты в живую?</h3>
+					<div class="accordion__header-icon">
+						<img src="./img/question__arrow.svg" alt="">
+					</div>
+				</div>
+				<div class="accordion__body">
+					<p class="accordion__body-text">
+						Строительство модульного здания займет от 1 месяца и сэкономит время на сборе документов и создании фундамента. Это на 40% быстрее капитального строительства.
+					</p>
+				</div>
+			</div>
+			<div class="accordion__item">
+				<div class="accordion__header">
+					<h3 class="accordion__header-title">Где посмотреть Ваши готовые проекты в живую?</h3>
+					<div class="accordion__header-icon">
+						<img src="./img/question__arrow.svg" alt="">
+					</div>
+				</div>
+				<div class="accordion__body">
+					<p class="accordion__body-text">
+						Строительство модульного здания займет от 1 месяца и сэкономит время на сборе документов и создании фундамента. Это на 40% быстрее капитального строительства.
+					</p>
+				</div>
+			</div>
+		</div>
+</section>
+
+
+
+<footer class="footer" id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-xs-12">
+				<a href="#" class="footer__logo logo">BLOCK_CONT</a>
+				<div class="footer__adress">Большой проспект  ВО, д 135</div>
+			</div>
+			<div class="col-md-4 col-xs-12 footer__requisites">
+				<div class="footer__requisites-header">Реквизиты</div>
+				<p>ОГРН: 1175007002323 <br> ИНН: 50421412291</p>
+			</div>
+			<div class="col-md-4 col-xs-12 footer__contacts">
+				<a class="footer__contacts-number" href="tel:+79212121212" >+7 (921) 212-12-12</a>
+				<a class="footer__contacts-btn btnOpenModal">Связаться с нами</a>
+			</div>
+		</div>
+	</div>
+	<div class="footer__develop">Разработано в Webink.</div>
+</footer>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!--СКРИПТЫ--> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=8c4059db-3b8d-4535-a15e-569ee80fc827&lang=ru_RU" type="text/javascript"></script>
+<script src="js/main.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js?ver=1.0.0'></script>
+
+<!-- ининциализируем анимацию при прокрутке -->
+<script>
+ new WOW().init();
+</script>
+
+
+
+<!-- Initialize Swiper -->
+
+
+</body>
+</html>
+
+
+
