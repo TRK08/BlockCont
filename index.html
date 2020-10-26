@@ -26,7 +26,7 @@
 	
 <header class="header" id="header">
 	<div class="container">
-		<div class="header__bar">
+		<div class="header__bar wow animate__animated animate__fadeInDown">
 			<a href="#" class="col-md-2 header__logo logo">BLOCK_CONT</a>
 			<ul class="col-md-10 header__menu hidden-xs hidden-sm">
 				<li class="header__menu-item">
@@ -56,12 +56,12 @@
 				<span class="line"></span>
 			</div>
 		</div>
-		<div class="header__text">
+		<div class="header__text wow animate__animated animate__fadeIn amimate__slow">
 			<h1 class="header__text-title">Строительство блок контейнеров <br> в Санкт-Петербурге</h1>
 			<span class="blue__line"></span>
 			<h3 class="header__text-subtitle">Презентабельное рабочее пространство для любого бюджета.</h3>
 		</div>
-		<div class="header__products-wrap">
+		<div class="header__products-wrap wow animate__animated animate__fadeIn amimate__slow">
 			<div class="header__products">
 				<div class="header__products-item">Модульные здания</div>
 				<span class="header__products-verticalLine"></span>
@@ -73,10 +73,10 @@
 			</div>
 		</div>
 		
-		<div class="header__btn">
+		<div class="header__btn wow animate__animated animate__fadeIn amimate__slow">
 			<a class="btnOpenModal">Получить бесплатную консультацию</a>
 		</div>
-		<div class="header__scroll">
+		<div class="header__scroll wow animate__animated animate__fadeIn amimate__slow">
 			<p class="header__scroll-title">Листайте вниз</p>
 			<img src="./img/header__scroll.svg" alt="" class="header__scroll-img wow animate__animated animate__fadeInDown animate__slower animate__infinite">
 		</div>
@@ -121,9 +121,9 @@
 <div class="projects" id="projects">
 	<div class="container">
 		<span class="blue__line"></span>
-		<h2 class="projects__title">География завершенных <br> проектов</h2>
+		<h2 class="projects__title wow animate__animated animate__fadeIn">География завершенных <br> проектов</h2>
 
-		<div class="col-md-6 projects__item" v-for="(item, index) in projects" :key="index">
+		<div class="col-md-6 projects__item wow animate__animated animate__fadeInUp" v-for="(item, index) in projects" :key="index">
 			<div class="projects__item-header">
 				<div class="projects__item-title"> {{ item.title }}</div>
 				<div class="projects__item-subtitle"> {{item.city}}</div>
@@ -208,28 +208,28 @@
 		<span class="blue__line"></span>
 		<h2 class="scheme__header">Схема сотрудничества</h2>
 		<div class="scheme__step">
-			<div class="scheme__step-item">
+			<div class="scheme__step-item wow animate__animated animate__fadeIn animate__delay-0s">
 				<div class="step-item__number">01</div>
 				<div class="dotted-line"></div>
 				<div class="step-item__title">Оставьте заявку</div>
 				<div class="step-item__descr">Вы можете оставить заявку на сайте, позвонить или написать нам на email.</div>
 				
 			</div>
-			<div class="scheme__step-item">
+			<div class="scheme__step-item wow animate__animated animate__fadeIn animate__delay-0s">
 				<div class="step-item__number">02</div>
-				<div class="dotted-line__circle"></div>
+				<div class="dotted-line__circle wow animate__animated animate__fadeIn animate__delay-1s"></div>
 				<div class="step-item__title">Оставьте заявку</div>
 				<div class="step-item__descr">Вы можете оставить заявку на сайте, позвонить или написать нам на email.</div>
 				
 			</div>
-			<div class="scheme__step-item">
+			<div class="scheme__step-item wow animate__animated animate__fadeIn animate__delay-1s">
 				<div class="step-item__number">03</div>
 				<div class="dotted-line"></div>
 				<div class="step-item__title">Оставьте заявку</div>
 				<div class="step-item__descr">Вы можете оставить заявку на сайте, позвонить или написать нам на email.</div>
 				
 			</div>
-			<div class="scheme__step-item">
+			<div class="scheme__step-item wow animate__animated animate__fadeIn animate__delay-1s">
 				<div class="step-item__number">04</div>
 				<div class="step-item__title">Оставьте заявку</div>
 				<div class="step-item__descr">Вы можете оставить заявку на сайте, позвонить или написать нам на email.</div>
@@ -237,7 +237,7 @@
 			</div>
 		</div>
 		
-		<div class="scheme__img">
+		<div class="scheme__img wow animate__animated animate__fadeInRight">
 			<img src="./img/scheme__img.png" alt="">
 		</div>
 	</div>
@@ -246,8 +246,8 @@
 <section class="advantage" id="advantage">
 	<div class="container">
 		<span class="blue__line"></span>
-		<h2>Доверьтесь нам <br> и получите офис, который Вам нужен</h2>
-		<div class="advantage__block">
+		<h2 class="wow animate__animated animate__fadeIn ">Доверьтесь нам <br> и получите офис, который Вам нужен</h2>
+		<div class="advantage__block wow animate__animated animate__fadeInUp">
 			<div class="advantage__block-item col-md-4 col-sm-6 col-xs-12">
 				<div class="block-item__img">
 					<img src="./img/advantage-block__img.svg" alt="">
@@ -316,7 +316,7 @@
 </section>
 
 
-<section class="contact" id="contact">
+<section class="contact wow animate__animated animate__fadeIn animate__slow" id="contact">
 	<div class="container">
 		<div class="contact__form col-sm-6">
 			<span class="blue__line"></span>
@@ -366,8 +366,8 @@
 <section class="question" id="question">
 	<div class="container">
 		<span class="blue__line"></span>
-		<div class="question__title">Часто задаваемые вопросы</div>
-		<div class="question__accordion">
+		<div class="question__title wow animate__animated animate__fadeIn">Часто задаваемые вопросы</div>
+		<div class="question__accordion wow animate__animated animate__fadeInUp">
 			<div class="accordion__item active">
 				<div class="accordion__header">
 					<h3 class="accordion__header-title">Где посмотреть Ваши готовые проекты в живую?</h3>
@@ -425,7 +425,7 @@
 
 
 
-<footer class="footer" id="footer">
+<footer class="footer wow animate__animated animate__fadeIn" id="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-xs-12">
