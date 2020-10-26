@@ -84,7 +84,8 @@ var app = new Vue({
 
 const menuBtn = document.querySelector('.header__bar-burger'),
   menu = document.querySelector('.header__mobileMenu'),
-  menuItems = document.querySelectorAll('.header__mobileMenu-item');
+  menuItems = document.querySelectorAll('.header__mobileMenu-item'),
+  htmlBlock = document.querySelector('html');
 
 
   menuBtn.addEventListener('click', toggleMenu);
@@ -98,9 +99,11 @@ function toggleMenu () {
     menuBtn.classList.toggle('open');
     if (menu.classList.contains('active')) {
       document.body.style.overflow = "hidden";
+      htmlBlock.style.overflow = "hidden";
     }
     else {
       document.body.style.overflow = "";
+      htmlBlock.style.overflow = "";
     }  
   }
 
@@ -110,8 +113,7 @@ function toggleMenu () {
 
   const closeModal = document.querySelector('.modal__form-close'),
     openModal = document.querySelectorAll('.btnOpenModal'),
-    modal = document.querySelector('.modal__form')
-  
+    modal = document.querySelector('.modal__form');
 
 openModal.forEach((e) => {
   e.addEventListener('click', toggleModal)
@@ -123,9 +125,12 @@ function toggleModal () {
     modal.classList.toggle('open');
     if (modal.classList.contains('open')) {
       document.body.style.overflow = "hidden";
+      htmlBlock.style.overflow = "hidden";
     }
     else {
       document.body.style.overflow = "";
+      htmlBlock.style.overflow = "";
+
     }  
   }
 
