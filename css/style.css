@@ -74,7 +74,7 @@ body {
 }
 
 .overHidden {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 svg path {
@@ -1128,6 +1128,10 @@ svg path {
     margin: 0 auto;
     margin-bottom: 30px;
   }
+
+  .modal__form-wrap .contact__form-form {
+    margin-bottom: 0;
+  }
 }
 @media (max-width: 672px) {
   * .blue__line {
@@ -1247,6 +1251,12 @@ svg path {
 
   .modal__form-wrap {
     padding: 40px 30px;
+    margin-top: 120px;
+  }
+
+  .modal__form {
+    height: 100%;
+    overflow-y: scroll !important;
   }
 }
 
